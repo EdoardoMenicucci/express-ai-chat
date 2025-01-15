@@ -101,6 +101,13 @@ app.setupWebSocket = (server) => {
             role: "model",
             parts: [{ text: response }],
           });
+
+          ws.send(
+            JSON.stringify({
+              status: "completed",
+              role: "ia",
+            })
+          );
           //console.log(await chat.getHistory());
         } else {
           console.log("Messaggio ricevuto dall'ia:", parsedMessage);
